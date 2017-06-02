@@ -1,0 +1,25 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- name: Configure yum file
+  template: src=CentOS-Base.repo dest=/etc/yum.repos.d/CentOS-Base.repo
+  tags: yum
+  notify: yum makecache
+
+- name: Install wget
+  yum: name=wget state=present
+  tags: wget
+
+- name: Install net-tools
+  yum: name=net-tools state=present
+  tags: net-tools  
+
+- name: disable firewall
+  systemd:
+    name: firewalld.service
+    enabled: no
+    state: stopped
+
+- name: disable selinux
+  selinux:
+    state: disabled
