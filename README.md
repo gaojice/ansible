@@ -1,5 +1,5 @@
 # ansible
 
-export ANSIBLE_INVENTORY=/home/vagrant/workspace/ansible/ansible_hosts
+export ANSIBLE_INVENTORY=./ansible_hosts
 
 ansible-playbook playbook.yml
